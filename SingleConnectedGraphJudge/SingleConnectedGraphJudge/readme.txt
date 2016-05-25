@@ -1,0 +1,6 @@
+compiler: LLVM 7.1
+
+The program read the file named test.txt, and output the graph number and the answer to the question, ’if the current graph is singly connected’.
+We solve the problem by finding forward of cross edge in the graph. If we find a forward or cross edge in the graph, we can say that the current graph is not singly connected.
+
+We first read the graph, use a one dimensional struct vertex type array to store the information of the graph, and use a adjacency matrix to store the edges. Then, we use depth first algorithm introduced on the course to recursively search the graph, beginning at each vertex in the graph. When we discover an edge, we can classify it by the vertex’s color which it leads to. White indicates a tree edge, gray indicates  a back edge, black indicates a forward or cross edge. Here, we focus on forward and cross edge, since as long as there is a forward or cross edge, we can say that the current graph is NOT singly connected. So, during the DFS visit, as long as the program find a black vertex, we set a int flag to 0, to indicate that the answer is no.
